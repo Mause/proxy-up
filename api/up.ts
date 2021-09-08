@@ -1,1 +1,3 @@
-export default (req, res) => res.status(200).send("hello");
+import { VercelRequest, VercelResponse } from "@vercel/node";
+export default (req: VercelRequest, res: VercelResponse) =>
+  res.status(200).send("hello");
