@@ -3004,10 +3004,10 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vercel-jwt-auth@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/vercel-jwt-auth/-/vercel-jwt-auth-1.1.8.tgz#4c887d152309cd62642f25c4f6a3f65ea2bd2414"
-  integrity sha512-QwPwbQpZKINfhE6V/TCOTPnmCNsW32VEZnkGI4ypCNOlqnpL/xmpUANhFilbBq4SAIcpLCXDQBD2KMPZysCWew==
+vercel-jwt-auth@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/vercel-jwt-auth/-/vercel-jwt-auth-1.1.9.tgz#40d483e870182e2e7d5a0063eca7ddb94994fdba"
+  integrity sha512-SC36DgnnRq1HK0yezKFIV4dMMB3qRD8XUQMDp8BRcWNzXvMs0OkMBdL1+W0bTGhSsUoNwTymccLIx5uI2dynOQ==
   dependencies:
     "@types/express" "^4.17.13"
     "@types/express-jwt" "^6.0.2"
