@@ -6,6 +6,9 @@
   "author": "Elliana May <me@mause.me>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@types/node": "^16.7.13",
     "@vercel/node": "^1.12.1",
