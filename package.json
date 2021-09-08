@@ -1,0 +1,13 @@
+{
+  "name": "proxy-up",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Mause/proxy-up",
+  "author": "Elliana May <me@mause.me>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@vercel/node": "^1.12.1",
+    "typescript": "^4.4.2"
+  }
+}
