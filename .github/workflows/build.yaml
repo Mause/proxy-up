@@ -19,4 +19,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: openapi.yaml
-          path: openapi.yaml
+          path: public/openapi.yaml
