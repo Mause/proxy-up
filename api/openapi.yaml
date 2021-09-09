@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info:
+  name: proxy-up
+  version: 0.0.1
+
+security:
+  - AuthHeader: []
+
+servers:
+  - url: "https://proxy-up.vc.mause.me"
+
+components:
+  securitySchemes:
+    AuthHeader:
+      scheme: header
+      type: http
+paths: {}
