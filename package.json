@@ -14,6 +14,7 @@
     "@types/node": "^16.9.0",
     "@vercel/node": "^1.12.1",
     "axios": "^0.21.4",
+    "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "typescript": "^4.4.2",
     "vercel-jwt-auth": "^1.1.9"
