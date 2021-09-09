@@ -53,6 +53,8 @@ export const responseShape = UpTransactionResponse.name;
 class Amount {
   @IsNumber()
   valueInBaseUnits!: number;
+  @IsString()
+  value!: string;
 }
 
 const transactionsApi = new TransactionsApi(
