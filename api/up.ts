@@ -4,9 +4,9 @@ import {
   IsDate,
   IsNotEmptyObject,
   IsString,
-  Type,
   ValidateNested,
 } from "class-validator";
+import { Type } from 'class-transformer';
 import {
   Configuration,
   ListTransactionsResponse,
