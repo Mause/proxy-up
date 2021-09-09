@@ -34,11 +34,14 @@ class UpTransaction {
   @IsString()
   id!: string;
   @IsNotEmptyObject()
+  @Type(() => UpAttributes)
   attributes!: UpAttributes;
 }
 
 class UpTransactionResponse {
   @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => AuthParam)
   public items: UpTransaction[];
   constructor(items: UpTransaction[]) {
     this.items = items;
