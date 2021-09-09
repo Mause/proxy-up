@@ -1,11 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import {
-  IsArray,
-  IsDate,
-  IsNotEmptyObject,
-  IsString,
-  ValidateNested,
-} from "class-validator";
+import { IsDate, IsString, ValidateNested, IsNumber } from "class-validator";
 import { Type } from "class-transformer";
 import {
   Configuration,
@@ -21,7 +15,8 @@ class UpAttributes {
   message: string;
   @IsDate()
   createdAt: string;
-  @IsNotEmptyObject()
+  @ValidateNested()
+  @Type(() => Amount)
   amount: Amount;
 
   constructor(
@@ -40,13 +35,12 @@ class UpAttributes {
 class UpTransaction {
   @IsString()
   id!: string;
-  @IsNotEmptyObject()
+  @ValidateNested()
   @Type(() => UpAttributes)
   attributes!: UpAttributes;
 }
 
 class UpTransactionResponse {
-  @IsArray()
   @ValidateNested({ each: true })
   @Type(() => UpTransaction)
   public items: UpTransaction[];
@@ -56,8 +50,9 @@ class UpTransactionResponse {
 }
 export const responseShape = UpTransactionResponse.name;
 
-interface Amount {
-  valueInBaseUnits: number;
+class Amount {
+  @IsNumber()
+  valueInBaseUnits!: number;
 }
 
 const transactionsApi = new TransactionsApi(
