@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { IsArray, IsDate, IsNotEmptyObject, IsString } from "class-validator";
+import { IsArray, IsDate, IsNotEmptyObject, IsString, Type, ValidateNested } from "class-validator";
 import {
   Configuration,
   ListTransactionsResponse,
@@ -41,7 +41,7 @@ class UpTransaction {
 class UpTransactionResponse {
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => AuthParam)
+  @Type(() => UpTransaction)
   public items: UpTransaction[];
   constructor(items: UpTransaction[]) {
     this.items = items;
