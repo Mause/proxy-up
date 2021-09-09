@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import "reflect-metadata";
 import { createServer } from "vercel-node-server";
 import listen from "test-listen";
 import axios from "axios";
