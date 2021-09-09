@@ -13,4 +13,10 @@ jobs:
       - name: TypeScript Error Reporter
         uses: gozala/typescript-error-reporter-action@v1.0.5
       - run: yarn build
+        env:
+          JWT_SECRET: dummy-secret
       - run: yarn test
+      - uses: actions/upload-artifact@v2
+        with:
+          name: openapi.yaml
+          path: openapi.yaml
