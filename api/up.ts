@@ -54,7 +54,7 @@ class Amount {
   @IsNumber()
   valueInBaseUnits!: number;
   @IsString()
-  value: string;
+  value!: string;
 }
 
 const transactionsApi = new TransactionsApi(
