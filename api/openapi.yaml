@@ -7,7 +7,7 @@ security:
   - AuthHeader: []
 
 servers:
-  - url: "https://proxy-up.vc.mause.me"
+  - url: "https://up.vc.mause.me"
 
 components:
   securitySchemes:
