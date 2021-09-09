@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  name: proxy-up
+  title: proxy-up
   version: 0.0.1
 
 security:
