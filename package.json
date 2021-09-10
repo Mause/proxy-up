@@ -32,6 +32,6 @@
     "test-listen": "^1.1.0",
     "ts-jest": "^27.0.5",
     "vercel-node-server": "^2.2.1",
-    "vercel-openapi": "^0.0.4"
+    "vercel-openapi": "^0.0.5"
   }
 }
