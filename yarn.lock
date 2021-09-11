@@ -2869,7 +2869,7 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-openapi3-ts@^2.0.0:
+openapi3-ts@^2.0.0, openapi3-ts@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-2.0.1.tgz#b270aecea09e924f1886bc02a72608fca5a98d85"
   integrity sha512-v6X3iwddhi276siej96jHGIqTx3wzVfMTmpGJEQDt7GPI7pI6sywItURLzpEci21SBRpPN/aOWSF5mVfFVNmcg==
@@ -3561,10 +3561,10 @@ vercel-node-server@^2.2.1:
     micro "^9.3.4"
     querystring "^0.2.0"
 
-vercel-openapi@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/vercel-openapi/-/vercel-openapi-0.0.5.tgz#93e4562a12d56ced1af09f6c14ba61ad23bf17a4"
-  integrity sha512-3R6Pr51V7uh6KyhLTSyNlOUbaTcBvOwZLxIV/Wkndp7xZcYqZ4ecYxVHxQGr8vNJRKSUUhcwqDSVFRu6OWRc4w==
+vercel-openapi@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/vercel-openapi/-/vercel-openapi-0.0.6.tgz#b0a09c1acb4b7d0539faf8be6c7f6713c23824a4"
+  integrity sha512-HSLlxgHEnpiQa3+7szEpfUb8s/dSYQh0uoazrj4aqAP1/alZw5y2O2D8nZXzcWjkRkBPqvfAhsnXQZTuB/kqTw==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
@@ -3572,6 +3572,7 @@ vercel-openapi@^0.0.5:
     class-transformer "^0.4.0"
     class-validator "^0.13.1"
     class-validator-jsonschema "^3.1.0"
+    openapi3-ts "^2.0.1"
     ts-node "^10"
     tslib "^2"
     typescript "^4.4"
