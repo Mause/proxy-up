@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc --noemit && yarn generateOpenapi",
-    "generateOpenapi": "vercel-openapi . -o public/openapi.yaml",
+    "generateOpenapi": "vercel-openapi generate . -o public/openapi.yaml",
     "test": "jest"
   },
   "dependencies": {
