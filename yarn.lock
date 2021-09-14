@@ -3852,10 +3852,10 @@ vercel-node-server@^2.2.1:
     micro "^9.3.4"
     querystring "^0.2.0"
 
-vercel-openapi@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vercel-openapi/-/vercel-openapi-0.1.0.tgz#103da76ec6d488233b20f068f4cd41c357480621"
-  integrity sha512-Dfo4VzqhV+hxhxYFTncWsJ4gP/6INgtfY+VCDzO+wNh7lSv/3wLCSiwdZFL/hSH0jLRoYGnVGJnIBoUO7lMOcg==
+vercel-openapi@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vercel-openapi/-/vercel-openapi-0.1.2.tgz#4967496c90ea578563c2032ba315cbb541f10a9d"
+  integrity sha512-RVKlziTM+A0gJnZz2pmUYFesuch9QNQbZ+joSUmKcE7FEEQEXPyQTltSbgnVVuP5Qs6w0tVNM+NGUiXmnz+6UA==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
