@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc --noemit && yarn generateOpenapi",
-    "generateOpenapi": "vercel-openapi generate . -o public/openapi.yaml",
+    "generateOpenapi": "vercel-openapi generate . -o public/openapi.yaml --envVar JWT_SECRET=secret",
     "test": "jest"
   },
   "dependencies": {
@@ -26,12 +26,12 @@
     "@types/jsonwebtoken": "^8.5.5",
     "@types/moxios": "^0.4.12",
     "@types/test-listen": "^1.1.0",
-    "jest": "^27.1.1",
+    "jest": "^27.2.0",
     "jsonwebtoken": "^8.5.1",
     "moxios": "^0.4.0",
     "test-listen": "^1.1.0",
     "ts-jest": "^27.0.5",
     "vercel-node-server": "^2.2.1",
-    "vercel-openapi": "^0.0.15"
+    "vercel-openapi": "^0.1.2"
   }
 }
