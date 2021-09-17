@@ -6,7 +6,7 @@ export default (handler: VercelApiHandler) =>
   async (req: VercelRequest, res: VercelResponse) => {
     const authenticate = factory(process.env.JWT_SECRET!)(handler);
 
-    if (req.method === "OPTIONS") return res.status(200);
+    if (req.method === "OPTIONS") return res.status(200).json({});
 
     return await authenticate(req, res);
   };
