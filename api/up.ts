@@ -59,7 +59,7 @@ class Amount {
 
 const transactionsApi = new TransactionsApi(
   new Configuration({
-    accessToken: process.env.UP_TOKEN
+    accessToken: process.env.UP_TOKEN,
   })
 );
 
