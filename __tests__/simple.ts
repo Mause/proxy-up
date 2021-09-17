@@ -13,7 +13,7 @@ const SECRET = "SECRET";
 process.env.JWT_SECRET = SECRET;
 
 beforeAll(async () => {
-  const { axios: axiosUp } = require("../api/up");
+  const { axiosUp } = require("../api/up");
   const routeUnderTest = require("../api/up");
   server = createServer(routeUnderTest.default);
   url = await listen(server);
@@ -21,7 +21,7 @@ beforeAll(async () => {
 });
 
 afterAll(() => {
-  const { axios: axiosUp } = require("../api/up");
+  const { axiosUp } = require("../api/up");
   server.close();
   moxios.uninstall(axiosUp);
 });
@@ -39,7 +39,7 @@ it("should return the expected response", async () => {
         },
       ],
       links: {
-        next: "https://up/next",
+        next: "https://up/next?page[after]=CURSOR",
       },
     },
   });

@@ -2,7 +2,7 @@
 
 exports[`should return the expected response 1`] = `
 Object {
-  "data": Array [
+  "items": Array [
     Object {
       "attributes": Object {
         "amount": Object {
@@ -13,7 +13,7 @@ Object {
     },
   ],
   "links": Object {
-    "next": "https://up/next",
+    "next": "/?page[after]=CURSOR",
   },
 }
 `;
