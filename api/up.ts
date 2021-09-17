@@ -17,6 +17,9 @@ import {
 import authenticate from "../src/authenticate";
 import { URL } from "url";
 import { BASE_PATH } from "../src/up/base";
+import pino from "pino";
+
+const log = pino({ prettyPrint: true });
 
 class UpAttributes {
   @IsString()
@@ -92,8 +95,9 @@ const transactionsApi = new TransactionsApi(
 
 export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
-    console.warn(request);
     const pageAfter = "page[after]";
+    let pageAfterValue = request.query[pageAfter] as string | null;
+    log.log({ pageAfterValue }, "Got request");
 
     let res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
@@ -104,14 +108,16 @@ export default authenticate(
         undefined,
         undefined,
         {
-          [pageAfter]: request.query[pageAfter],
+          [pageAfter]: pageAfterValue,
         }
       )
     ).data;
 
-    const pageAfterValue = new URLSearchParams(
-      new URL(res.links.next!).search
-    ).get(pageAfter);
+    pageAfterValue = new URLSearchParams(new URL(res.links.next!).search).get(
+      pageAfter
+    );
+    const next = request.url + `?${pageAfter}=` + pageAfterValue;
+    log.info({ next }, "Next url generated");
 
     response.status(200);
     response.json(
@@ -126,9 +132,7 @@ export default authenticate(
             id: row.id,
             attributes: { ...row.attributes, message: row.attributes.message! },
           })),
-        {
-          next: request.url + `?${pageAfter}=` + pageAfterValue,
-        }
+        { next }
       )
     );
   }
