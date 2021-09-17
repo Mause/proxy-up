@@ -7,7 +7,7 @@ import {
   TransactionsApi,
 } from "../src/up";
 import authenticate from "../src/authenticate";
-import URL from 'url';
+import URL from "url";
 
 class UpAttributes {
   @IsString()
@@ -60,7 +60,7 @@ class Amount {
 
 const transactionsApi = new TransactionsApi(
   new Configuration({
-    accessToken: process.env.UP_TOKEN
+    accessToken: process.env.UP_TOKEN,
   })
 );
 
@@ -86,7 +86,9 @@ export default authenticate(
         )
       ).data;
       transactions.push(...res.data);
-      pageAfter = new URLSearchParams( URL.parse(res.links.next!).query!).get('page[after]');
+      pageAfter = new URLSearchParams(URL.parse(res.links.next!).query!).get(
+        "page[after]"
+      );
 
       console.log(pageAfter, res.links);
       i--;
