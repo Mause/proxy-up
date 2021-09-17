@@ -1,13 +1,22 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { IsDate, IsString, ValidateNested, IsNumber } from "class-validator";
+import {
+  IsDate,
+  IsString,
+  ValidateNested,
+  IsNumber,
+  IsUrl,
+  IsOptional,
+} from "class-validator";
 import { Type } from "class-transformer";
+import Axios from "axios";
 import {
   Configuration,
   ListTransactionsResponse,
   TransactionsApi,
 } from "../src/up";
 import authenticate from "../src/authenticate";
-import URL from "url";
+import { URL } from "url";
+import { BASE_PATH } from "../src/up/base";
 
 class UpAttributes {
   @IsString()
@@ -41,12 +50,26 @@ class UpTransaction {
   attributes!: UpAttributes;
 }
 
+class UpLinks {
+  @IsUrl()
+  @IsOptional()
+  next: string | null;
+
+  constructor(next: string | null) {
+    this.next = next;
+  }
+}
+
 class UpTransactionResponse {
   @ValidateNested({ each: true })
   @Type(() => UpTransaction)
   public items: UpTransaction[];
-  constructor(items: UpTransaction[]) {
+  @ValidateNested()
+  @Type(() => UpLinks)
+  public links: UpLinks;
+  constructor(items: UpTransaction[], links: UpLinks) {
     this.items = items;
+    this.links = links;
   }
 }
 export const responseShape = UpTransactionResponse.name;
@@ -58,46 +81,42 @@ class Amount {
   value!: string;
 }
 
+export const axiosUp = Axios.create();
 const transactionsApi = new TransactionsApi(
   new Configuration({
     accessToken: process.env.UP_TOKEN,
-  })
+  }),
+  BASE_PATH,
+  axiosUp
 );
 
 export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
-    const transactions = [];
-    let i = 10;
+    console.warn(request);
+    const pageAfter = "page[after]";
 
-    let pageAfter = undefined;
-    while (i > 0) {
-      console.log(i);
-      let res: ListTransactionsResponse = (
-        await transactionsApi.transactionsGet(
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          {
-            "page[after]": pageAfter,
-          }
-        )
-      ).data;
-      transactions.push(...res.data);
-      pageAfter = new URLSearchParams(URL.parse(res.links.next!).query!).get(
-        "page[after]"
-      );
+    let res: ListTransactionsResponse = (
+      await transactionsApi.transactionsGet(
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          [pageAfter]: request.query[pageAfter],
+        }
+      )
+    ).data;
 
-      console.log(pageAfter, res.links);
-      i--;
-    }
+    const pageAfterValue = new URLSearchParams(
+      new URL(res.links.next!).search
+    ).get(pageAfter);
 
     response.status(200);
     response.json(
       new UpTransactionResponse(
-        transactions
+        res.data
           .filter(
             (trans) =>
               trans.attributes.amount.valueInBaseUnits > 0 &&
@@ -106,7 +125,10 @@ export default authenticate(
           .map((row) => ({
             id: row.id,
             attributes: { ...row.attributes, message: row.attributes.message! },
-          }))
+          })),
+        {
+          next: request.url + `?${pageAfter}=` + pageAfterValue,
+        }
       )
     );
   }
