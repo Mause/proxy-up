@@ -7,6 +7,7 @@ import {
   TransactionsApi,
 } from "../src/up";
 import authenticate from "../src/authenticate";
+import URL from 'url';
 
 class UpAttributes {
   @IsString()
@@ -85,7 +86,8 @@ export default authenticate(
         )
       ).data;
       transactions.push(...res.data);
-      pageAfter = res.links.next!;
+      pageAfter = new URLSearchParams( URL.parse(res.links.next!).query!).get('page[after]');
+
       console.log(pageAfter, res.links);
       i--;
     }
