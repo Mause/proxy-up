@@ -97,7 +97,7 @@ export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
     const pageAfter = "page[after]";
     let pageAfterValue = request.query[pageAfter] as string | null;
-    log.log({ pageAfterValue }, "Got request");
+    log.info({ pageAfterValue }, "Got request");
 
     let res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
