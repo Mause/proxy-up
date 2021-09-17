@@ -95,9 +95,11 @@ const transactionsApi = new TransactionsApi(
 
 export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
+    const requestUrl = new URL(request.url!, `https://${request.headers.host}`);
+
     const pageAfter = "page[after]";
     let pageAfterValue = request.query[pageAfter] as string | null;
-    log.info({ pageAfterValue }, "Got request");
+    log.info({ pageAfterValue, requestUrl }, "Got request");
 
     let res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
@@ -116,7 +118,7 @@ export default authenticate(
     pageAfterValue = new URLSearchParams(new URL(res.links.next!).search).get(
       pageAfter
     );
-    const next = request.url + `?${pageAfter}=` + pageAfterValue;
+    const next = requestUrl + `?${pageAfter}=` + pageAfterValue;
     log.info({ next }, "Next url generated");
 
     response.status(200);
