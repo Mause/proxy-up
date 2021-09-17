@@ -49,5 +49,9 @@ it("should return the expected response", async () => {
     },
   });
   expect(response.status).toBe(200);
-  expect(response.data).toMatchSnapshot();
+  expect(
+    JSON.parse(
+      JSON.stringify(response.data).replace(/localhost:\d+/, "localhost")
+    )
+  ).toMatchSnapshot();
 });
