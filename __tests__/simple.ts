@@ -46,12 +46,9 @@ it("should return the expected response", async () => {
   const response = await axios.get(url, {
     headers: {
       Authorization: "Bearer " + sign({ aud: "authenticated" }, SECRET),
+      "x-forwarded-host": "localhost",
     },
   });
   expect(response.status).toBe(200);
-  expect(
-    JSON.parse(
-      JSON.stringify(response.data).replace(/localhost:\d+/, "localhost")
-    )
-  ).toMatchSnapshot();
+  expect(response.data).toMatchSnapshot();
 });
