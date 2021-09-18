@@ -18,6 +18,7 @@ import authenticate from "../src/authenticate";
 import { URL } from "url";
 import { BASE_PATH } from "../src/up/base";
 import pino from "pino";
+import _ from "lodash";
 
 const log = pino({ prettyPrint: true });
 
@@ -96,10 +97,7 @@ const transactionsApi = new TransactionsApi(
 export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
     const requestUrl = getRequestUrl(request);
-
-    const pageAfter = "page[after]";
-    let pageAfterValue = request.query[pageAfter] as string | null;
-    log.info({ pageAfterValue, requestUrl }, "Got request");
+    log.info({ requestUrl });
 
     let res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
@@ -109,7 +107,7 @@ export default authenticate(
         undefined,
         undefined,
         undefined,
-        { query: pageAfterValue && { [pageAfter]: pageAfterValue } }
+        { query: _.pick(request.query, ["page[after]", "page[size]"]) }
       )
     ).data;
 
