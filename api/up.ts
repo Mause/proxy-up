@@ -113,10 +113,8 @@ export default authenticate(
       )
     ).data;
 
-    pageAfterValue = new URLSearchParams(new URL(res.links.next!).search).get(
-      pageAfter
-    );
-    const next = requestUrl + `?${pageAfter}=` + pageAfterValue;
+    requestUrl.search = new URL(res.links.next!).search;
+    const next = requestUrl.toString();
     log.info({ next }, "Next url generated");
 
     response.status(200);
