@@ -109,7 +109,7 @@ export default authenticate(
         undefined,
         undefined,
         undefined,
-        { query: { [pageAfter]: pageAfterValue } }
+        { query: pageAfterValue && { [pageAfter]: pageAfterValue } }
       )
     ).data;
 
