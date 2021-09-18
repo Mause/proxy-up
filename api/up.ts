@@ -99,7 +99,7 @@ export default authenticate(
     const requestUrl = getRequestUrl(request);
     log.info({ requestUrl });
 
-    let res: ListTransactionsResponse = (
+    const res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
         undefined,
         undefined,
