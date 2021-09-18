@@ -95,7 +95,7 @@ const transactionsApi = new TransactionsApi(
 
 export default authenticate(
   async (request: VercelRequest, response: VercelResponse) => {
-    const requestUrl = new URL(request.url!, `https://${request.headers.host}`);
+    const requestUrl = getRequestUrl(request);
 
     const pageAfter = "page[after]";
     let pageAfterValue = request.query[pageAfter] as string | null;
@@ -137,3 +137,12 @@ export default authenticate(
     );
   }
 );
+
+function getRequestUrl(request: VercelRequest) {
+  const requestUrl = new URL(request.url!, "https://dummy");
+  const headers = request.headers as { [key: string]: string };
+  requestUrl.protocol = headers["x-forwarded-proto"];
+  requestUrl.host = headers["x-forwarded-host"];
+  requestUrl.port = headers["x-forwarded-port"];
+  return requestUrl;
+}
