@@ -17,10 +17,8 @@ import {
 import authenticate from "../src/authenticate";
 import { URL } from "url";
 import { BASE_PATH } from "../src/up/base";
-import pino from "pino";
 import _ from "lodash";
-
-const log = pino({ prettyPrint: true });
+import { log } from "../support/log";
 
 class UpAttributes {
   @IsString()
