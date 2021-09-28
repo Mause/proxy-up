@@ -27,7 +27,7 @@
     "vercel-jwt-auth": "^1.1.9"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/moxios": "^0.4.12",
     "@types/test-listen": "^1.1.0",
@@ -37,6 +37,6 @@
     "test-listen": "^1.1.0",
     "ts-jest": "^27.0.5",
     "vercel-node-server": "^2.2.1",
-    "vercel-openapi": "^0.1.5"
+    "vercel-openapi": "^0.1.6"
   }
 }
