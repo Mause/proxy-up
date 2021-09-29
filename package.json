@@ -15,7 +15,7 @@
     "@logtail/bunyan": "^0.1.10",
     "@logtail/node": "^0.1.10",
     "@types/bunyan": "^1.8.7",
-    "@types/lodash": "^4.14.173",
+    "@types/lodash": "^4.14.175",
     "@types/node": "^16.10.1",
     "@vercel/node": "^1.12.1",
     "axios": "^0.21.4",
