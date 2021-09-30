@@ -13,7 +13,7 @@ jobs:
           cache: yarn
       - run: yarn --frozen
       - name: TypeScript Error Reporter
-        uses: gozala/typescript-error-reporter-action@v1.0.5
+        uses: gozala/typescript-error-reporter-action@v1.0.7
       - run: yarn build
       - run: yarn test
       - uses: actions/upload-artifact@v2
