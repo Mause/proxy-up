@@ -23,7 +23,7 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "reflect-metadata": "^0.1.13",
-    "typescript": "^4.4.3",
+    "typescript": "^4.4.4",
     "vercel-jwt-auth": "^1.1.9"
   },
   "devDependencies": {
