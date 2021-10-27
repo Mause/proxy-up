@@ -105,7 +105,7 @@ export default authenticate(
         undefined,
         undefined,
         undefined,
-        { query: _.pick(request.query, ["page[after]", "page[size]"]) }
+        { params: _.pick(request.query, ["page[after]", "page[size]"]) }
       )
     ).data;
 
