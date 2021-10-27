@@ -13,7 +13,11 @@
  */
 
 import { Configuration } from "./configuration";
-import globalAxios, { AxiosPromise, AxiosInstance } from "axios";
+import globalAxios, {
+  AxiosPromise,
+  AxiosInstance,
+  AxiosRequestConfig,
+} from "axios";
 // Some imports not used depending on template conditions
 // @ts-ignore
 import {
@@ -1446,7 +1450,7 @@ export const AccountsApiAxiosParamCreator = function (
      */
     accountsGet: async (
       pageSize?: number,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/accounts`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1472,7 +1476,7 @@ export const AccountsApiAxiosParamCreator = function (
         localVarQueryParameter["page[size]"] = pageSize;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -1495,7 +1499,7 @@ export const AccountsApiAxiosParamCreator = function (
      */
     accountsIdGet: async (
       id: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'id' is not null or undefined
       assertParamExists("accountsIdGet", "id", id);
@@ -1522,7 +1526,7 @@ export const AccountsApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -1555,7 +1559,7 @@ export const AccountsApiFp = function (configuration?: Configuration) {
      */
     async accountsGet(
       pageSize?: number,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -1582,7 +1586,7 @@ export const AccountsApiFp = function (configuration?: Configuration) {
      */
     async accountsIdGet(
       id: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -1659,7 +1663,7 @@ export class AccountsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof AccountsApi
    */
-  public accountsGet(pageSize?: number, options?: any) {
+  public accountsGet(pageSize?: number, options?: AxiosRequestConfig) {
     return AccountsApiFp(this.configuration)
       .accountsGet(pageSize, options)
       .then((request) => request(this.axios, this.basePath));
@@ -1673,7 +1677,7 @@ export class AccountsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof AccountsApi
    */
-  public accountsIdGet(id: string, options?: any) {
+  public accountsIdGet(id: string, options?: AxiosRequestConfig) {
     return AccountsApiFp(this.configuration)
       .accountsIdGet(id, options)
       .then((request) => request(this.axios, this.basePath));
@@ -1697,7 +1701,7 @@ export const CategoriesApiAxiosParamCreator = function (
      */
     categoriesGet: async (
       filterParent?: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/categories`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1723,7 +1727,7 @@ export const CategoriesApiAxiosParamCreator = function (
         localVarQueryParameter["filter[parent]"] = filterParent;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -1746,7 +1750,7 @@ export const CategoriesApiAxiosParamCreator = function (
      */
     categoriesIdGet: async (
       id: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'id' is not null or undefined
       assertParamExists("categoriesIdGet", "id", id);
@@ -1773,7 +1777,7 @@ export const CategoriesApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -1807,7 +1811,7 @@ export const CategoriesApiFp = function (configuration?: Configuration) {
      */
     async categoriesGet(
       filterParent?: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -1834,7 +1838,7 @@ export const CategoriesApiFp = function (configuration?: Configuration) {
      */
     async categoriesIdGet(
       id: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -1914,7 +1918,7 @@ export class CategoriesApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CategoriesApi
    */
-  public categoriesGet(filterParent?: string, options?: any) {
+  public categoriesGet(filterParent?: string, options?: AxiosRequestConfig) {
     return CategoriesApiFp(this.configuration)
       .categoriesGet(filterParent, options)
       .then((request) => request(this.axios, this.basePath));
@@ -1928,7 +1932,7 @@ export class CategoriesApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CategoriesApi
    */
-  public categoriesIdGet(id: string, options?: any) {
+  public categoriesIdGet(id: string, options?: AxiosRequestConfig) {
     return CategoriesApiFp(this.configuration)
       .categoriesIdGet(id, options)
       .then((request) => request(this.axios, this.basePath));
@@ -1952,7 +1956,7 @@ export const TagsApiAxiosParamCreator = function (
      */
     tagsGet: async (
       pageSize?: number,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/tags`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1978,7 +1982,7 @@ export const TagsApiAxiosParamCreator = function (
         localVarQueryParameter["page[size]"] = pageSize;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2003,7 +2007,7 @@ export const TagsApiAxiosParamCreator = function (
     transactionsTransactionIdRelationshipsTagsDelete: async (
       transactionId: string,
       updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'transactionId' is not null or undefined
       assertParamExists(
@@ -2037,7 +2041,7 @@ export const TagsApiAxiosParamCreator = function (
 
       localVarHeaderParameter["Content-Type"] = "application/json";
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2067,7 +2071,7 @@ export const TagsApiAxiosParamCreator = function (
     transactionsTransactionIdRelationshipsTagsPost: async (
       transactionId: string,
       updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'transactionId' is not null or undefined
       assertParamExists(
@@ -2101,7 +2105,7 @@ export const TagsApiAxiosParamCreator = function (
 
       localVarHeaderParameter["Content-Type"] = "application/json";
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2139,7 +2143,7 @@ export const TagsApiFp = function (configuration?: Configuration) {
      */
     async tagsGet(
       pageSize?: number,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -2168,7 +2172,7 @@ export const TagsApiFp = function (configuration?: Configuration) {
     async transactionsTransactionIdRelationshipsTagsDelete(
       transactionId: string,
       updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -2196,7 +2200,7 @@ export const TagsApiFp = function (configuration?: Configuration) {
     async transactionsTransactionIdRelationshipsTagsPost(
       transactionId: string,
       updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -2299,7 +2303,7 @@ export class TagsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof TagsApi
    */
-  public tagsGet(pageSize?: number, options?: any) {
+  public tagsGet(pageSize?: number, options?: AxiosRequestConfig) {
     return TagsApiFp(this.configuration)
       .tagsGet(pageSize, options)
       .then((request) => request(this.axios, this.basePath));
@@ -2317,7 +2321,7 @@ export class TagsApi extends BaseAPI {
   public transactionsTransactionIdRelationshipsTagsDelete(
     transactionId: string,
     updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return TagsApiFp(this.configuration)
       .transactionsTransactionIdRelationshipsTagsDelete(
@@ -2340,7 +2344,7 @@ export class TagsApi extends BaseAPI {
   public transactionsTransactionIdRelationshipsTagsPost(
     transactionId: string,
     updateTransactionTagsRequest?: UpdateTransactionTagsRequest,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return TagsApiFp(this.configuration)
       .transactionsTransactionIdRelationshipsTagsPost(
@@ -2381,7 +2385,7 @@ export const TransactionsApiAxiosParamCreator = function (
       filterUntil?: string,
       filterCategory?: string,
       filterTag?: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'accountId' is not null or undefined
       assertParamExists(
@@ -2442,7 +2446,7 @@ export const TransactionsApiAxiosParamCreator = function (
         localVarQueryParameter["filter[tag]"] = filterTag;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2475,7 +2479,7 @@ export const TransactionsApiAxiosParamCreator = function (
       filterUntil?: string,
       filterCategory?: string,
       filterTag?: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/transactions`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2527,7 +2531,7 @@ export const TransactionsApiAxiosParamCreator = function (
         localVarQueryParameter["filter[tag]"] = filterTag;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2550,7 +2554,7 @@ export const TransactionsApiAxiosParamCreator = function (
      */
     transactionsIdGet: async (
       id: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'id' is not null or undefined
       assertParamExists("transactionsIdGet", "id", id);
@@ -2577,7 +2581,7 @@ export const TransactionsApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2623,7 +2627,7 @@ export const TransactionsApiFp = function (configuration?: Configuration) {
       filterUntil?: string,
       filterCategory?: string,
       filterTag?: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -2667,7 +2671,7 @@ export const TransactionsApiFp = function (configuration?: Configuration) {
       filterUntil?: string,
       filterCategory?: string,
       filterTag?: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -2699,7 +2703,7 @@ export const TransactionsApiFp = function (configuration?: Configuration) {
      */
     async transactionsIdGet(
       id: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -2845,7 +2849,7 @@ export class TransactionsApi extends BaseAPI {
     filterUntil?: string,
     filterCategory?: string,
     filterTag?: string,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return TransactionsApiFp(this.configuration)
       .accountsAccountIdTransactionsGet(
@@ -2881,7 +2885,7 @@ export class TransactionsApi extends BaseAPI {
     filterUntil?: string,
     filterCategory?: string,
     filterTag?: string,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return TransactionsApiFp(this.configuration)
       .transactionsGet(
@@ -2904,7 +2908,7 @@ export class TransactionsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof TransactionsApi
    */
-  public transactionsIdGet(id: string, options?: any) {
+  public transactionsIdGet(id: string, options?: AxiosRequestConfig) {
     return TransactionsApiFp(this.configuration)
       .transactionsIdGet(id, options)
       .then((request) => request(this.axios, this.basePath));
@@ -2925,7 +2929,9 @@ export const UtilityEndpointsApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    utilPingGet: async (options: any = {}): Promise<RequestArgs> => {
+    utilPingGet: async (
+      options: AxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
       const localVarPath = `/util/ping`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2946,7 +2952,7 @@ export const UtilityEndpointsApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -2978,7 +2984,7 @@ export const UtilityEndpointsApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async utilPingGet(
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PingResponse>
     > {
@@ -3034,7 +3040,7 @@ export class UtilityEndpointsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof UtilityEndpointsApi
    */
-  public utilPingGet(options?: any) {
+  public utilPingGet(options?: AxiosRequestConfig) {
     return UtilityEndpointsApiFp(this.configuration)
       .utilPingGet(options)
       .then((request) => request(this.axios, this.basePath));
@@ -3058,7 +3064,7 @@ export const WebhooksApiAxiosParamCreator = function (
      */
     webhooksGet: async (
       pageSize?: number,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/webhooks`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3084,7 +3090,7 @@ export const WebhooksApiAxiosParamCreator = function (
         localVarQueryParameter["page[size]"] = pageSize;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3107,7 +3113,7 @@ export const WebhooksApiAxiosParamCreator = function (
      */
     webhooksIdDelete: async (
       id: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'id' is not null or undefined
       assertParamExists("webhooksIdDelete", "id", id);
@@ -3134,7 +3140,7 @@ export const WebhooksApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3157,7 +3163,7 @@ export const WebhooksApiAxiosParamCreator = function (
      */
     webhooksIdGet: async (
       id: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'id' is not null or undefined
       assertParamExists("webhooksIdGet", "id", id);
@@ -3184,7 +3190,7 @@ export const WebhooksApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3207,7 +3213,7 @@ export const WebhooksApiAxiosParamCreator = function (
      */
     webhooksPost: async (
       createWebhookRequest?: CreateWebhookRequest,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/webhooks`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3231,7 +3237,7 @@ export const WebhooksApiAxiosParamCreator = function (
 
       localVarHeaderParameter["Content-Type"] = "application/json";
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3261,7 +3267,7 @@ export const WebhooksApiAxiosParamCreator = function (
     webhooksWebhookIdLogsGet: async (
       webhookId: string,
       pageSize?: number,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'webhookId' is not null or undefined
       assertParamExists("webhooksWebhookIdLogsGet", "webhookId", webhookId);
@@ -3292,7 +3298,7 @@ export const WebhooksApiAxiosParamCreator = function (
         localVarQueryParameter["page[size]"] = pageSize;
       }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3315,7 +3321,7 @@ export const WebhooksApiAxiosParamCreator = function (
      */
     webhooksWebhookIdPingPost: async (
       webhookId: string,
-      options: any = {}
+      options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'webhookId' is not null or undefined
       assertParamExists("webhooksWebhookIdPingPost", "webhookId", webhookId);
@@ -3342,7 +3348,7 @@ export const WebhooksApiAxiosParamCreator = function (
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -3375,7 +3381,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
      */
     async webhooksGet(
       pageSize?: number,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -3402,7 +3408,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
      */
     async webhooksIdDelete(
       id: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -3424,7 +3430,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
      */
     async webhooksIdGet(
       id: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -3451,7 +3457,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
      */
     async webhooksPost(
       createWebhookRequest?: CreateWebhookRequest,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -3480,7 +3486,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
     async webhooksWebhookIdLogsGet(
       webhookId: string,
       pageSize?: number,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -3509,7 +3515,7 @@ export const WebhooksApiFp = function (configuration?: Configuration) {
      */
     async webhooksWebhookIdPingPost(
       webhookId: string,
-      options?: any
+      options?: AxiosRequestConfig
     ): Promise<
       (
         axios?: AxiosInstance,
@@ -3646,7 +3652,7 @@ export class WebhooksApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof WebhooksApi
    */
-  public webhooksGet(pageSize?: number, options?: any) {
+  public webhooksGet(pageSize?: number, options?: AxiosRequestConfig) {
     return WebhooksApiFp(this.configuration)
       .webhooksGet(pageSize, options)
       .then((request) => request(this.axios, this.basePath));
@@ -3660,7 +3666,7 @@ export class WebhooksApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof WebhooksApi
    */
-  public webhooksIdDelete(id: string, options?: any) {
+  public webhooksIdDelete(id: string, options?: AxiosRequestConfig) {
     return WebhooksApiFp(this.configuration)
       .webhooksIdDelete(id, options)
       .then((request) => request(this.axios, this.basePath));
@@ -3674,7 +3680,7 @@ export class WebhooksApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof WebhooksApi
    */
-  public webhooksIdGet(id: string, options?: any) {
+  public webhooksIdGet(id: string, options?: AxiosRequestConfig) {
     return WebhooksApiFp(this.configuration)
       .webhooksIdGet(id, options)
       .then((request) => request(this.axios, this.basePath));
@@ -3690,7 +3696,7 @@ export class WebhooksApi extends BaseAPI {
    */
   public webhooksPost(
     createWebhookRequest?: CreateWebhookRequest,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return WebhooksApiFp(this.configuration)
       .webhooksPost(createWebhookRequest, options)
@@ -3709,7 +3715,7 @@ export class WebhooksApi extends BaseAPI {
   public webhooksWebhookIdLogsGet(
     webhookId: string,
     pageSize?: number,
-    options?: any
+    options?: AxiosRequestConfig
   ) {
     return WebhooksApiFp(this.configuration)
       .webhooksWebhookIdLogsGet(webhookId, pageSize, options)
@@ -3724,7 +3730,10 @@ export class WebhooksApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof WebhooksApi
    */
-  public webhooksWebhookIdPingPost(webhookId: string, options?: any) {
+  public webhooksWebhookIdPingPost(
+    webhookId: string,
+    options?: AxiosRequestConfig
+  ) {
     return WebhooksApiFp(this.configuration)
       .webhooksWebhookIdPingPost(webhookId, options)
       .then((request) => request(this.axios, this.basePath));
