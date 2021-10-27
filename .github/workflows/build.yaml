@@ -14,8 +14,8 @@ jobs:
         with:
           cache: yarn
       - run: yarn --frozen
-      - name: TypeScript Error Reporter
-        uses: spin-org/typescript-error-reporter-action@v1.0.11
+#       - name: TypeScript Error Reporter
+#         uses: spin-org/typescript-error-reporter-action@v1.0.11
       - run: yarn build
       - run: yarn test
       - uses: actions/upload-artifact@v2
