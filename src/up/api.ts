@@ -97,6 +97,12 @@ export interface AccountResourceAttributes {
    */
   accountType: AccountTypeEnum;
   /**
+   * The ownership structure for this account.
+   * @type {OwnershipTypeEnum}
+   * @memberof AccountResourceAttributes
+   */
+  ownershipType: OwnershipTypeEnum;
+  /**
    * The available balance of the account, taking into account any amounts that are currently on hold.
    * @type {MoneyObject}
    * @memberof AccountResourceAttributes
@@ -649,6 +655,17 @@ export interface MoneyObject {
   valueInBaseUnits: number;
 }
 /**
+ * Specifies the structure under which a bank account is owned. Currently returned values are `INDIVIDUAL` and `JOINT`.
+ * @export
+ * @enum {string}
+ */
+
+export enum OwnershipTypeEnum {
+  Individual = "INDIVIDUAL",
+  Joint = "JOINT",
+}
+
+/**
  * Basic ping response to verify authentication.
  * @export
  * @interface PingResponse
@@ -867,6 +884,12 @@ export interface TransactionResourceRelationships {
   account: TransactionResourceRelationshipsAccount;
   /**
    *
+   * @type {TransactionResourceRelationshipsTransferAccount}
+   * @memberof TransactionResourceRelationships
+   */
+  transferAccount: TransactionResourceRelationshipsTransferAccount;
+  /**
+   *
    * @type {CategoryResourceRelationshipsParent}
    * @memberof TransactionResourceRelationships
    */
@@ -972,6 +995,44 @@ export interface TransactionResourceRelationshipsTagsLinks {
    * @memberof TransactionResourceRelationshipsTagsLinks
    */
   self: string;
+}
+/**
+ * If this transaction is a transfer between accounts, this field will contain the account the transaction went to/came from. The `amount` field can be used to determine the direction of the transfer.
+ * @export
+ * @interface TransactionResourceRelationshipsTransferAccount
+ */
+export interface TransactionResourceRelationshipsTransferAccount {
+  /**
+   *
+   * @type {TransactionResourceRelationshipsTransferAccountData}
+   * @memberof TransactionResourceRelationshipsTransferAccount
+   */
+  data: TransactionResourceRelationshipsTransferAccountData | null;
+  /**
+   *
+   * @type {AccountResourceRelationshipsTransactionsLinks}
+   * @memberof TransactionResourceRelationshipsTransferAccount
+   */
+  links?: AccountResourceRelationshipsTransactionsLinks;
+}
+/**
+ *
+ * @export
+ * @interface TransactionResourceRelationshipsTransferAccountData
+ */
+export interface TransactionResourceRelationshipsTransferAccountData {
+  /**
+   * The type of this resource: `accounts`
+   * @type {string}
+   * @memberof TransactionResourceRelationshipsTransferAccountData
+   */
+  type: string;
+  /**
+   * The unique identifier of the resource within its type.
+   * @type {string}
+   * @memberof TransactionResourceRelationshipsTransferAccountData
+   */
+  id: string;
 }
 /**
  * Specifies which stage of processing a transaction is currently at. Currently returned values are `HELD` and `SETTLED`. When a transaction is held, its account’s `availableBalance` is affected. When a transaction is settled, its account’s `currentBalance` is affected.
@@ -1445,11 +1506,15 @@ export const AccountsApiAxiosParamCreator = function (
      * Retrieve a paginated list of all accounts for the currently authenticated user. The returned list is paginated and can be scrolled by following the `prev` and `next` links where present.
      * @summary List accounts
      * @param {number} [pageSize] The number of records to return in each page.
+     * @param {AccountTypeEnum} [filterAccountType] The type of account for which to return records. This can be used to filter Savers from spending accounts.
+     * @param {OwnershipTypeEnum} [filterOwnershipType] The account ownership structure for which to return records. This can be used to filter 2Up accounts from Up accounts.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     accountsGet: async (
       pageSize?: number,
+      filterAccountType?: AccountTypeEnum,
+      filterOwnershipType?: OwnershipTypeEnum,
       options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/accounts`;
@@ -1474,6 +1539,14 @@ export const AccountsApiAxiosParamCreator = function (
 
       if (pageSize !== undefined) {
         localVarQueryParameter["page[size]"] = pageSize;
+      }
+
+      if (filterAccountType !== undefined) {
+        localVarQueryParameter["filter[accountType]"] = filterAccountType;
+      }
+
+      if (filterOwnershipType !== undefined) {
+        localVarQueryParameter["filter[ownershipType]"] = filterOwnershipType;
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -1554,11 +1627,15 @@ export const AccountsApiFp = function (configuration?: Configuration) {
      * Retrieve a paginated list of all accounts for the currently authenticated user. The returned list is paginated and can be scrolled by following the `prev` and `next` links where present.
      * @summary List accounts
      * @param {number} [pageSize] The number of records to return in each page.
+     * @param {AccountTypeEnum} [filterAccountType] The type of account for which to return records. This can be used to filter Savers from spending accounts.
+     * @param {OwnershipTypeEnum} [filterOwnershipType] The account ownership structure for which to return records. This can be used to filter 2Up accounts from Up accounts.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async accountsGet(
       pageSize?: number,
+      filterAccountType?: AccountTypeEnum,
+      filterOwnershipType?: OwnershipTypeEnum,
       options?: AxiosRequestConfig
     ): Promise<
       (
@@ -1568,6 +1645,8 @@ export const AccountsApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.accountsGet(
         pageSize,
+        filterAccountType,
+        filterOwnershipType,
         options
       );
       return createRequestFunction(
@@ -1622,15 +1701,19 @@ export const AccountsApiFactory = function (
      * Retrieve a paginated list of all accounts for the currently authenticated user. The returned list is paginated and can be scrolled by following the `prev` and `next` links where present.
      * @summary List accounts
      * @param {number} [pageSize] The number of records to return in each page.
+     * @param {AccountTypeEnum} [filterAccountType] The type of account for which to return records. This can be used to filter Savers from spending accounts.
+     * @param {OwnershipTypeEnum} [filterOwnershipType] The account ownership structure for which to return records. This can be used to filter 2Up accounts from Up accounts.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     accountsGet(
       pageSize?: number,
+      filterAccountType?: AccountTypeEnum,
+      filterOwnershipType?: OwnershipTypeEnum,
       options?: any
     ): AxiosPromise<ListAccountsResponse> {
       return localVarFp
-        .accountsGet(pageSize, options)
+        .accountsGet(pageSize, filterAccountType, filterOwnershipType, options)
         .then((request) => request(axios, basePath));
     },
     /**
@@ -1659,13 +1742,20 @@ export class AccountsApi extends BaseAPI {
    * Retrieve a paginated list of all accounts for the currently authenticated user. The returned list is paginated and can be scrolled by following the `prev` and `next` links where present.
    * @summary List accounts
    * @param {number} [pageSize] The number of records to return in each page.
+   * @param {AccountTypeEnum} [filterAccountType] The type of account for which to return records. This can be used to filter Savers from spending accounts.
+   * @param {OwnershipTypeEnum} [filterOwnershipType] The account ownership structure for which to return records. This can be used to filter 2Up accounts from Up accounts.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AccountsApi
    */
-  public accountsGet(pageSize?: number, options?: AxiosRequestConfig) {
+  public accountsGet(
+    pageSize?: number,
+    filterAccountType?: AccountTypeEnum,
+    filterOwnershipType?: OwnershipTypeEnum,
+    options?: AxiosRequestConfig
+  ) {
     return AccountsApiFp(this.configuration)
-      .accountsGet(pageSize, options)
+      .accountsGet(pageSize, filterAccountType, filterOwnershipType, options)
       .then((request) => request(this.axios, this.basePath));
   }
 
