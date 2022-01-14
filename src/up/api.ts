@@ -198,6 +198,25 @@ export interface CashbackObject {
   amount: MoneyObject;
 }
 /**
+ * Uniquely identifies a category in the API.
+ * @export
+ * @interface CategoryInputResourceIdentifier
+ */
+export interface CategoryInputResourceIdentifier {
+  /**
+   * The type of this resource: `categories`
+   * @type {string}
+   * @memberof CategoryInputResourceIdentifier
+   */
+  type: string;
+  /**
+   * The unique identifier of the category, as returned by the `/categories` endpoint.
+   * @type {string}
+   * @memberof CategoryInputResourceIdentifier
+   */
+  id: string;
+}
+/**
  * Provides information about a category and its ancestry.
  * @export
  * @interface CategoryResource
@@ -828,6 +847,12 @@ export interface TransactionResourceAttributes {
    */
   message: string | null;
   /**
+   * Boolean flag set to true on transactions that support the use of categories.
+   * @type {boolean}
+   * @memberof TransactionResourceAttributes
+   */
+  isCategorizable: boolean;
+  /**
    * If this transaction is currently in the `HELD` status, or was ever in the `HELD` status, the `amount` and `foreignAmount` of the transaction while `HELD`.
    * @type {HoldInfoObject}
    * @memberof TransactionResourceAttributes
@@ -890,10 +915,10 @@ export interface TransactionResourceRelationships {
   transferAccount: TransactionResourceRelationshipsTransferAccount;
   /**
    *
-   * @type {CategoryResourceRelationshipsParent}
+   * @type {TransactionResourceRelationshipsCategory}
    * @memberof TransactionResourceRelationships
    */
-  category: CategoryResourceRelationshipsParent;
+  category: TransactionResourceRelationshipsCategory;
   /**
    *
    * @type {CategoryResourceRelationshipsParent}
@@ -948,6 +973,44 @@ export interface TransactionResourceRelationshipsAccountData {
 /**
  *
  * @export
+ * @interface TransactionResourceRelationshipsCategory
+ */
+export interface TransactionResourceRelationshipsCategory {
+  /**
+   *
+   * @type {CategoryResourceRelationshipsParentData}
+   * @memberof TransactionResourceRelationshipsCategory
+   */
+  data: CategoryResourceRelationshipsParentData | null;
+  /**
+   *
+   * @type {TransactionResourceRelationshipsCategoryLinks}
+   * @memberof TransactionResourceRelationshipsCategory
+   */
+  links?: TransactionResourceRelationshipsCategoryLinks;
+}
+/**
+ *
+ * @export
+ * @interface TransactionResourceRelationshipsCategoryLinks
+ */
+export interface TransactionResourceRelationshipsCategoryLinks {
+  /**
+   * The link to retrieve or modify linkage between this resources and the related resource(s) in this relationship.
+   * @type {string}
+   * @memberof TransactionResourceRelationshipsCategoryLinks
+   */
+  self: string;
+  /**
+   * The link to retrieve the related resource(s) in this relationship.
+   * @type {string}
+   * @memberof TransactionResourceRelationshipsCategoryLinks
+   */
+  related?: string;
+}
+/**
+ *
+ * @export
  * @interface TransactionResourceRelationshipsTags
  */
 export interface TransactionResourceRelationshipsTags {
@@ -997,7 +1060,7 @@ export interface TransactionResourceRelationshipsTagsLinks {
   self: string;
 }
 /**
- * If this transaction is a transfer between accounts, this field will contain the account the transaction went to/came from. The `amount` field can be used to determine the direction of the transfer.
+ * If this transaction is a transfer between accounts, this relationship will contain the account the transaction went to/came from. The `amount` field can be used to determine the direction of the transfer.
  * @export
  * @interface TransactionResourceRelationshipsTransferAccount
  */
@@ -1045,6 +1108,19 @@ export enum TransactionStatusEnum {
   Settled = "SETTLED",
 }
 
+/**
+ * Request to update the category associated with a transaction.
+ * @export
+ * @interface UpdateTransactionCategoryRequest
+ */
+export interface UpdateTransactionCategoryRequest {
+  /**
+   * The category to set on the transaction. Set this entire key to `null` de-categorize a transaction.
+   * @type {CategoryInputResourceIdentifier}
+   * @memberof UpdateTransactionCategoryRequest
+   */
+  data: CategoryInputResourceIdentifier | null;
+}
 /**
  * Request to add or remove tags associated with a transaction.
  * @export
@@ -1881,6 +1957,70 @@ export const CategoriesApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
+    /**
+     * Updates the category associated with a transaction. Only transactions for which `isCategorizable` is set to true support this operation. The `id` is taken from the list exposed on `/categories` and cannot be one of the top-level (parent) categories. To de-categorize a transaction, set the entire `data` key to `null`. An HTTP `204` is returned on success. The associated category, along with its request URL is also exposed via the `category` relationship on the transaction resource returned from `/transactions/{id}`.
+     * @summary Categorize transaction
+     * @param {string} transactionId The unique identifier for the transaction.
+     * @param {UpdateTransactionCategoryRequest} [updateTransactionCategoryRequest]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    transactionsTransactionIdRelationshipsCategoryPatch: async (
+      transactionId: string,
+      updateTransactionCategoryRequest?: UpdateTransactionCategoryRequest,
+      options: AxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'transactionId' is not null or undefined
+      assertParamExists(
+        "transactionsTransactionIdRelationshipsCategoryPatch",
+        "transactionId",
+        transactionId
+      );
+      const localVarPath =
+        `/transactions/{transactionId}/relationships/category`.replace(
+          `{${"transactionId"}}`,
+          encodeURIComponent(String(transactionId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: "PATCH",
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication bearer_auth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration);
+
+      localVarHeaderParameter["Content-Type"] = "application/json";
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateTransactionCategoryRequest,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
   };
 };
 
@@ -1946,6 +2086,34 @@ export const CategoriesApiFp = function (configuration?: Configuration) {
         configuration
       );
     },
+    /**
+     * Updates the category associated with a transaction. Only transactions for which `isCategorizable` is set to true support this operation. The `id` is taken from the list exposed on `/categories` and cannot be one of the top-level (parent) categories. To de-categorize a transaction, set the entire `data` key to `null`. An HTTP `204` is returned on success. The associated category, along with its request URL is also exposed via the `category` relationship on the transaction resource returned from `/transactions/{id}`.
+     * @summary Categorize transaction
+     * @param {string} transactionId The unique identifier for the transaction.
+     * @param {UpdateTransactionCategoryRequest} [updateTransactionCategoryRequest]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async transactionsTransactionIdRelationshipsCategoryPatch(
+      transactionId: string,
+      updateTransactionCategoryRequest?: UpdateTransactionCategoryRequest,
+      options?: AxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.transactionsTransactionIdRelationshipsCategoryPatch(
+          transactionId,
+          updateTransactionCategoryRequest,
+          options
+        );
+      return createRequestFunction(
+        localVarAxiosArgs,
+        globalAxios,
+        BASE_PATH,
+        configuration
+      );
+    },
   };
 };
 
@@ -1990,6 +2158,27 @@ export const CategoriesApiFactory = function (
         .categoriesIdGet(id, options)
         .then((request) => request(axios, basePath));
     },
+    /**
+     * Updates the category associated with a transaction. Only transactions for which `isCategorizable` is set to true support this operation. The `id` is taken from the list exposed on `/categories` and cannot be one of the top-level (parent) categories. To de-categorize a transaction, set the entire `data` key to `null`. An HTTP `204` is returned on success. The associated category, along with its request URL is also exposed via the `category` relationship on the transaction resource returned from `/transactions/{id}`.
+     * @summary Categorize transaction
+     * @param {string} transactionId The unique identifier for the transaction.
+     * @param {UpdateTransactionCategoryRequest} [updateTransactionCategoryRequest]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    transactionsTransactionIdRelationshipsCategoryPatch(
+      transactionId: string,
+      updateTransactionCategoryRequest?: UpdateTransactionCategoryRequest,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .transactionsTransactionIdRelationshipsCategoryPatch(
+          transactionId,
+          updateTransactionCategoryRequest,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
   };
 };
 
@@ -2025,6 +2214,29 @@ export class CategoriesApi extends BaseAPI {
   public categoriesIdGet(id: string, options?: AxiosRequestConfig) {
     return CategoriesApiFp(this.configuration)
       .categoriesIdGet(id, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Updates the category associated with a transaction. Only transactions for which `isCategorizable` is set to true support this operation. The `id` is taken from the list exposed on `/categories` and cannot be one of the top-level (parent) categories. To de-categorize a transaction, set the entire `data` key to `null`. An HTTP `204` is returned on success. The associated category, along with its request URL is also exposed via the `category` relationship on the transaction resource returned from `/transactions/{id}`.
+   * @summary Categorize transaction
+   * @param {string} transactionId The unique identifier for the transaction.
+   * @param {UpdateTransactionCategoryRequest} [updateTransactionCategoryRequest]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CategoriesApi
+   */
+  public transactionsTransactionIdRelationshipsCategoryPatch(
+    transactionId: string,
+    updateTransactionCategoryRequest?: UpdateTransactionCategoryRequest,
+    options?: AxiosRequestConfig
+  ) {
+    return CategoriesApiFp(this.configuration)
+      .transactionsTransactionIdRelationshipsCategoryPatch(
+        transactionId,
+        updateTransactionCategoryRequest,
+        options
+      )
       .then((request) => request(this.axios, this.basePath));
   }
 }
