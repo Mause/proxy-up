@@ -15,7 +15,7 @@ jobs:
             url: https://github.com/up-banking/api/raw/master/v1/openapi.json
 
     steps:
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.3.0
         with:
           node-version: 14
       - name: Update types
