@@ -17,7 +17,7 @@
     "@types/bunyan": "^1.8.8",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.41",
-    "@vercel/node": "^1.12.1",
+    "@vercel/node": "^2.0.0",
     "axios": "^0.27.2",
     "bunyan": ">=2.0.0",
     "class-transformer": "^0.5.1",
