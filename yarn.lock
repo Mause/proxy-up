@@ -793,38 +793,38 @@
   dependencies:
     "@logtail/types" "^0.1.8"
 
-"@logtail/core@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@logtail/core/-/core-0.1.10.tgz#83154b1e1e86f073604c73b340fe1c069ca471d8"
-  integrity sha512-76q951W7EoaF7SwAZbLsnAjD0QUXNHHGXnsBu/tGHd5UT50jlyxI0t27Lev9IQiF08NFy9SlBE1V26RAeMDccQ==
+"@logtail/core@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@logtail/core/-/core-0.1.12.tgz#e5b4ffefbcee82b2a3b60623d23399440a68d61d"
+  integrity sha512-h0OPFfgrZ7pUK11wAHYvPmTXtzT8KYFUeQOC7BQX0mIJG8cgWGEHJTLVtdcp+gce0EqO5/61NczLhjx3T4tacA==
   dependencies:
-    "@logtail/tools" "^0.1.8"
-    "@logtail/types" "^0.1.8"
+    "@logtail/tools" "^0.1.12"
+    "@logtail/types" "^0.1.12"
 
-"@logtail/node@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@logtail/node/-/node-0.1.10.tgz#836160f68aade6e14b2abc482e746e5dad827dd8"
-  integrity sha512-zJgKm593NkMMI3QJBCR1ry6pS/2YKINO9cNZWBDEOeG06L2vVFn/BdK/Uxuypyi9LtQ9kc5lZSbFPBi91NiHlg==
+"@logtail/node@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@logtail/node/-/node-0.1.14.tgz#5df0130ad7975fa2520ba2b643416982683e49ca"
+  integrity sha512-vbK/LwX0Z9p7iRcbk0nW0mYoxAKp4V+9VSKBB3E77ap+FQgsnCz9fZYihMg/eiThGgHqb7wfGLaKQJ2REiQK7A==
   dependencies:
-    "@logtail/core" "^0.1.10"
-    "@logtail/types" "^0.1.8"
+    "@logtail/core" "^0.1.12"
+    "@logtail/types" "^0.1.12"
     "@msgpack/msgpack" "^2.5.1"
     "@types/stack-trace" "^0.0.29"
     cross-fetch "^3.0.4"
     minimatch "^3.0.4"
     stack-trace "^0.0.10"
 
-"@logtail/tools@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@logtail/tools/-/tools-0.1.8.tgz#9598c37c830de27bc676fc1f33f720d3a76aaafe"
-  integrity sha512-Q2lQBrTRzLCFYJXxhQFfigSpU5Vanhi/EAwOULfNZQn4vV68PKKfqTWK3IRSqOVJ4YpjPusu+BpNGasZfyWACQ==
+"@logtail/tools@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@logtail/tools/-/tools-0.1.12.tgz#5484313ff1d2409dc8afbc9f5a499c510fed6063"
+  integrity sha512-lKXq1gaW63rGsCbSOhLOPeBovvc2RyNaMRHanWJcOC/nTIHj46JNIh+TbINre13PKn473JigZ7yXys35V8K3Vw==
   dependencies:
-    "@logtail/types" "^0.1.8"
+    "@logtail/types" "^0.1.12"
 
-"@logtail/types@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.1.8.tgz#a87489ceba1150453a0fc81eee032f8ddcf3272e"
-  integrity sha512-2XsXMGLK675kkJ+Pq0RE4c0hGFUr7hP4kt2/GTf/5FTzKre3VE0M9yRIXubpsQq4pIrnMgzVnH42A+z92QwL/A==
+"@logtail/types@^0.1.12", "@logtail/types@^0.1.8":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.1.12.tgz#af12897c4710ebac76c2e2a5a72af5c6d5d9220b"
+  integrity sha512-PnMweu6oyfBCn3/iLfQBf+tTaOIle4gRUFuRnqze72kR5CKFlBAq3h4Yur3KRiDtYJcT8H+x1kZWZtC/xdAYAg==
   dependencies:
     js "^0.1.0"
 
@@ -3373,14 +3373,7 @@ mimic-response@^2.0.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
   integrity sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==
 
-"minimatch@2 || 3":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
-  integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
-  dependencies:
-    brace-expansion "^1.1.7"
-
-minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@^3.0.4:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
@@ -3496,6 +3489,11 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
+
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-fetch@2.6.7:
   version "2.6.7"

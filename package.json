@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@logtail/bunyan": "^0.1.10",
-    "@logtail/node": "^0.1.10",
+    "@logtail/node": "^0.1.14",
     "@types/bunyan": "^1.8.8",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.41",
