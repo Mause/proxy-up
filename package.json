@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@logtail/bunyan": "^0.1.10",
+    "@logtail/bunyan": "^0.1.19",
     "@logtail/node": "^0.1.10",
     "@types/bunyan": "^1.8.8",
     "@types/lodash": "^4.14.178",
