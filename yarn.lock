@@ -786,12 +786,12 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@logtail/bunyan@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@logtail/bunyan/-/bunyan-0.1.10.tgz#cc8d56722261ccf25c2d596748ce49773ecfeaee"
-  integrity sha512-MBbizbi4TWD/riLw5GGvk6GrRlWWwD1i7zFluHrjSnmLR2uVhF5eYP/HGeCmJb4BukdrXxjjgFL/MZpbbFn0oA==
+"@logtail/bunyan@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@logtail/bunyan/-/bunyan-0.2.0.tgz#90cb6e671154647d7cf1f32a44d98d1659e05981"
+  integrity sha512-Pk7j+TEjujuSI+GUmq2zW1QNYvSSefZgqoH3CcfqR3qtLddD0Q0y9OrCi69WjN+5owsnk7e0mgwZ6xQHSBD+yQ==
   dependencies:
-    "@logtail/types" "^0.1.8"
+    "@logtail/types" "^0.2.0"
 
 "@logtail/core@^0.1.10":
   version "0.1.10"
@@ -825,6 +825,13 @@
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.1.8.tgz#a87489ceba1150453a0fc81eee032f8ddcf3272e"
   integrity sha512-2XsXMGLK675kkJ+Pq0RE4c0hGFUr7hP4kt2/GTf/5FTzKre3VE0M9yRIXubpsQq4pIrnMgzVnH42A+z92QwL/A==
+  dependencies:
+    js "^0.1.0"
+
+"@logtail/types@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.2.0.tgz#131954d434932d481361b35c5c05fec0329d5483"
+  integrity sha512-tcSHCUdr1Kax3wPYbBMSuNowzhJZfyC8fi06gEOZNT7NR45eZxHnF42CozDdx0QE3Pp2nPt62ARGYOHxJ4f+Qw==
   dependencies:
     js "^0.1.0"
 
@@ -3496,6 +3503,11 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
+
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-fetch@2.6.7:
   version "2.6.7"
