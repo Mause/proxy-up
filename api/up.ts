@@ -119,6 +119,7 @@ export default authenticate(
     ).data;
 
     requestUrl.search = new URL(res.links.next!).search;
+    requestUrl.searchParams.set('includeNegative', includeNegative.toString());
     const next = requestUrl.toString();
     log.info({ next }, "Next url generated");
 
