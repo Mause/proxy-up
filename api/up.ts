@@ -69,11 +69,13 @@ class UpTransactionResponse {
   @ValidateNested()
   @Type(() => UpLinks)
   public links: UpLinks;
+
   constructor(items: UpTransaction[], links: UpLinks) {
     this.items = items;
     this.links = links;
   }
 }
+
 export const responseShape = UpTransactionResponse.name;
 
 class Amount {
@@ -97,6 +99,13 @@ export default authenticate(
     const requestUrl = getRequestUrl(request);
     log.info({ requestUrl });
 
+    const { query } = request;
+    const includeNegative = query.includeNegative === "true";
+    log.info({
+      query,
+      includeNegative,
+    });
+
     const res: ListTransactionsResponse = (
       await transactionsApi.transactionsGet(
         undefined,
@@ -110,18 +119,24 @@ export default authenticate(
     ).data;
 
     requestUrl.search = new URL(res.links.next!).search;
+    requestUrl.searchParams.set('includeNegative', includeNegative.toString());
     const next = requestUrl.toString();
     log.info({ next }, "Next url generated");
 
     response.status(200);
+    let transactions = res.data;
+
+    if (!includeNegative) {
+      transactions = transactions.filter(
+        (trans) =>
+          trans.attributes.amount.valueInBaseUnits > 0 &&
+          trans.attributes.rawText
+      );
+    }
+
     response.json(
       new UpTransactionResponse(
-        res.data
-          .filter(
-            (trans) =>
-              trans.attributes.amount.valueInBaseUnits > 0 &&
-              trans.attributes.rawText
-          )
+        transactions
           .map((row) => ({
             id: row.id,
             attributes: { ...row.attributes, message: row.attributes.message! },
