@@ -14,4 +14,23 @@ components:
     AuthHeader:
       scheme: header
       type: http
-paths: {}
+paths:
+  /api/up:
+    get:
+      operationId: getUp
+      parameters:
+        - in: query
+          name: includeNegative
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: page[after]
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: page[size]
+          schema:
+              type: number
+          required: false
