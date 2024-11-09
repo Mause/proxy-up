@@ -2,11 +2,11 @@ import { Configuration, AccountsApi } from "../src/up";
 import { IsNumber, IsString } from "class-validator";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-const config = new Configuration({
-  accessToken: process.env.UP_API_KEY,
-});
-
-const accountsApi = new AccountsApi(config);
+const accountsApi = new AccountsApi(
+  new Configuration({
+    accessToken: process.env.UP_TOKEN,
+  })
+);
 
 class Shape {
   @IsNumber()
