@@ -13,7 +13,7 @@ Object {
     },
   ],
   "links": Object {
-    "next": "https://localhost/?page[after]=CURSOR",
+    "next": "https://localhost/?page%5Bafter%5D=CURSOR&includeNegative=false",
   },
 }
 `;
