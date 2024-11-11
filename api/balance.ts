@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Configuration, AccountsApi } from "../src/up";
 import { IsNumber, IsString, IsArray, ValidateNested } from "class-validator";
 import { VercelRequest, VercelResponse } from "@vercel/node";
