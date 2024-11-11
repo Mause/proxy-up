@@ -1,5 +1,5 @@
 import { Configuration, AccountsApi } from "../src/up";
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsString, IsArray, ValidateNested } from "class-validator";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { Type } from "class-transformer";
 
@@ -26,6 +26,8 @@ class Money {
 }
 
 class ResponseShape {
+  @IsArray()
+  @ValidateNested({ each: true })
   @Type(() => Shape)
   data!: Shape[];
 }
