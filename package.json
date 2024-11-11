@@ -24,7 +24,7 @@
     "class-validator": "^0.14.0",
     "reflect-metadata": "^0.2.0",
     "typescript": "^5.0.0",
-    "vercel-jwt-auth": "^1.1.9"
+    "vercel-jwt-auth": "^1.1.10"
   },
   "devDependencies": {
     "@types/jest": "^28.0.0",
