@@ -25,17 +25,23 @@ class Money {
   value!: string;
 }
 
-export const responseShape = Shape.name;
+class ResponseShape {
+  @Type(() => Shape)
+  data!: Shape[];
+}
+
+export const responseShape = ResponseShape.name;
 
 export default async function (req: VercelRequest, res: VercelResponse) {
   const accounts = await accountsApi.accountsGet();
-  res.json(
-    accounts.data.data.map(({ attributes }): Shape => {
+  const response: ResponseShape = {
+    data: accounts.data.data.map(({ id, attributes }): Shape => {
       return {
-        id: attributes.id,
+        id,
         displayName: attributes.displayName,
         balance: attributes.balance,
       };
-    })
-  );
+    }),
+  };
+  res.json(response);
 }
