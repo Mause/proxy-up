@@ -15,6 +15,7 @@ class Shape {
   @IsString()
   displayName!: string;
   @Type(() => Money)
+  @ValidateNested()
   balance!: Money;
 }
 
