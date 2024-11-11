@@ -1,6 +1,7 @@
 import { Configuration, AccountsApi } from "../src/up";
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsString, IsArray, ValidateNested } from "class-validator";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import { Type } from "class-transformer";
 
 const accountsApi = new AccountsApi(
   new Configuration({
@@ -9,19 +10,41 @@ const accountsApi = new AccountsApi(
 );
 
 class Shape {
+  @IsString()
+  id!: string;
+  @IsString()
+  displayName!: string;
+  @Type(() => Money)
+  @ValidateNested()
+  balance!: Money;
+}
+
+class Money {
   @IsNumber()
   valueInBaseUnits!: number;
   @IsString()
   value!: string;
 }
 
-export const responseShape = Shape.name;
+class ResponseShape {
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => Shape)
+  data!: Shape[];
+}
+
+export const responseShape = ResponseShape.name;
 
 export default async function (req: VercelRequest, res: VercelResponse) {
   const accounts = await accountsApi.accountsGet();
-  res.json(
-    accounts.data.data.map((account) => {
-      return [account.attributes.displayName, account.attributes.balance];
-    })
-  );
+  const response: ResponseShape = {
+    data: accounts.data.data.map(({ id, attributes }): Shape => {
+      return {
+        id,
+        displayName: attributes.displayName,
+        balance: attributes.balance,
+      };
+    }),
+  };
+  res.json(response);
 }
