@@ -1542,7 +1542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.11.41":
+"@types/node@npm:*":
   version: 16.11.41
   resolution: "@types/node@npm:16.11.41"
   checksum: 10/9f18c7801e26b83c45c92700712551a2c2def19c821cde54c576d098849e0555bbb21eafe0e84a7f84cc459a4f6b7065aeddba54e9254e953567a25953eb99c1
@@ -1553,6 +1553,15 @@ __metadata:
   version: 16.18.11
   resolution: "@types/node@npm:16.18.11"
   checksum: 10/d7dbcee9dfe94b3676aff733d144fe6c1872375c1ac16322f930cb018fe99f67d71764bede566dd3314c0294f7f67e7ad93643bad5667ede859c137d918600b7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.0.0":
+  version: 22.9.0
+  resolution: "@types/node@npm:22.9.0"
+  dependencies:
+    undici-types: "npm:~6.19.8"
+  checksum: 10/a7df3426891868b0f5fb03e46aeddd8446178233521c624a44531c92a040cf08a82d8235f7e1e02af731fd16984665d4d71f3418caf9c2788313b10f040d615d
   languageName: node
   linkType: hard
 
@@ -6153,7 +6162,7 @@ __metadata:
     "@types/jsonwebtoken": "npm:^8.5.8"
     "@types/lodash": "npm:^4.14.178"
     "@types/moxios": "npm:^0.4.14"
-    "@types/node": "npm:^16.11.41"
+    "@types/node": "npm:^22.0.0"
     "@types/test-listen": "npm:^1.1.0"
     "@vercel/node": "npm:^3.0.0"
     axios: "npm:^0.27.2"
@@ -7334,6 +7343,13 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/00504c01ee42d470c23495426af07512e25e6546bce7e24572e72a9ca2e6b2e9bea63de4286c3cfea644874da1467dcfca23f4f98f7caf20f8b03c0213bb6837
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.8":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10/cf0b48ed4fc99baf56584afa91aaffa5010c268b8842f62e02f752df209e3dea138b372a60a963b3b2576ed932f32329ce7ddb9cb5f27a6c83040d8cd74b7a70
   languageName: node
   linkType: hard
 
