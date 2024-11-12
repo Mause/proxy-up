@@ -11,6 +11,9 @@
     "generateOpenapi": "vercel-openapi generate . -o public/openapi.yaml --envVar JWT_SECRET=secret",
     "test": "jest"
   },
+  "engines": {
+    "node": "20"
+  },
   "dependencies": {
     "@logtail/bunyan": "^0.5.0",
     "@logtail/node": "^0.5.0",
