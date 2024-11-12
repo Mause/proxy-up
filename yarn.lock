@@ -1633,6 +1633,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@upstash/redis@npm:^1.34.0":
+  version: 1.34.3
+  resolution: "@upstash/redis@npm:1.34.3"
+  dependencies:
+    crypto-js: "npm:^4.2.0"
+  checksum: 10/bc56656b80b368e318287eaeac861c65b7b35b5227564bbea54670aa1de0bc225bde72a36edef4ae4e379dd0b7fa2be6e003cbfc779fe6d4ffdb478af0196cfc
+  languageName: node
+  linkType: hard
+
 "@vercel/build-utils@npm:8.4.12":
   version: 8.4.12
   resolution: "@vercel/build-utils@npm:8.4.12"
@@ -1644,6 +1653,15 @@ __metadata:
   version: 2.0.2
   resolution: "@vercel/error-utils@npm:2.0.2"
   checksum: 10/dedbe691bfbd834dfa0a7726ffeb04c43386c68f7e17f75c75c37f5cf6bb311be063dacf2193d40ecc61ada2c3d69f7deac5a0691cfd29ce4a25a91f55de693f
+  languageName: node
+  linkType: hard
+
+"@vercel/kv@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@vercel/kv@npm:3.0.0"
+  dependencies:
+    "@upstash/redis": "npm:^1.34.0"
+  checksum: 10/019354a89fb624017cefc2414d3d4c2897631ff2ec5fb066c8e3e5cea848750723ae22ac44cfff509e3aed6be7361db7e50b9097d7784427120b3ae9474e52fa
   languageName: node
   linkType: hard
 
@@ -2768,6 +2786,13 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10/e1a13869d2f57d974de0d9ef7acbf69dc6937db20b918525a01dacb5032129bd552d290d886d981e99f1b624cb03657084cc87bd40f115c07ecf376821c729ce
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "crypto-js@npm:4.2.0"
+  checksum: 10/c7bcc56a6e01c3c397e95aa4a74e4241321f04677f9a618a8f48a63b5781617248afb9adb0629824792e7ec20ca0d4241a49b6b2938ae6f973ec4efc5c53c924
   languageName: node
   linkType: hard
 
@@ -6155,6 +6180,7 @@ __metadata:
     "@types/moxios": "npm:^0.4.14"
     "@types/node": "npm:^16.11.41"
     "@types/test-listen": "npm:^1.1.0"
+    "@vercel/kv": "npm:^3.0.0"
     "@vercel/node": "npm:^3.0.0"
     axios: "npm:^0.27.2"
     bunyan: "npm:>=2.0.0"
