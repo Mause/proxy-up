@@ -5,6 +5,7 @@ import {
 } from "../src/up/api";
 import { Configuration } from "../src/up/configuration";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import { kv } from "@vercel/kv";
 
 const configuration = new Configuration({
   accessToken: process.env.UP_ACCESS_TOKEN,
@@ -38,6 +39,8 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   const rollup: Record<string, number> = Object.fromEntries(
     await Promise.all(categories.data.data.map(rollupCategory))
   );
+
+  await kv.hset("rollup", rollup);
 
   res.status(200).json({ rollup, categories });
 }

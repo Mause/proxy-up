@@ -20,6 +20,7 @@
     "@types/bunyan": "^1.8.8",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.41",
+    "@vercel/kv": "^3.0.0",
     "@vercel/node": "^3.0.0",
     "axios": "^0.27.2",
     "bunyan": ">=2.0.0",
