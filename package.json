@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "dependencies": {
     "@logtail/bunyan": "^0.5.0",
