@@ -1503,12 +1503,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsonwebtoken@npm:^8.5.8":
-  version: 8.5.8
-  resolution: "@types/jsonwebtoken@npm:8.5.8"
+"@types/jsonwebtoken@npm:^9.0.0":
+  version: 9.0.10
+  resolution: "@types/jsonwebtoken@npm:9.0.10"
   dependencies:
+    "@types/ms": "npm:*"
     "@types/node": "npm:*"
-  checksum: 10/477adcef32d4aa746f09d5a6c2b84d4e9f8c4a342699c53e9ea247beb63be200712a4b97cccf53c6c62cfdd19acee0cbf22ec27a56cd5af6c95b93ee39020428
+  checksum: 10/d7960d995ad815511c7f4e7f09d91522dfe16e7e800cdd6226c8b1b624c534e0f3b8f8f3beb60e3189865269f028002f1a490189beca5afd02bc96ef1d68f21f
   languageName: node
   linkType: hard
 
@@ -1539,6 +1540,13 @@ __metadata:
   dependencies:
     axios: "npm:^0.24.0"
   checksum: 10/dcee23aa3b4a6442d54c25b7815c0459c9ba7af6ee798be941f9f78aa494de6939953f79e4e0daa41a591ddb161b67c4c26f3d53250ea4f68069cba51d04cc26
+  languageName: node
+  linkType: hard
+
+"@types/ms@npm:*":
+  version: 2.1.0
+  resolution: "@types/ms@npm:2.1.0"
+  checksum: 10/532d2ebb91937ccc4a89389715e5b47d4c66e708d15942fe6cc25add6dc37b2be058230a327dd50f43f89b8b6d5d52b74685a9e8f70516edfc9bdd6be910eff4
   languageName: node
   linkType: hard
 
@@ -6150,7 +6158,7 @@ __metadata:
     "@logtail/node": "npm:^0.5.0"
     "@types/bunyan": "npm:^1.8.8"
     "@types/jest": "npm:^28.0.0"
-    "@types/jsonwebtoken": "npm:^8.5.8"
+    "@types/jsonwebtoken": "npm:^9.0.0"
     "@types/lodash": "npm:^4.14.178"
     "@types/moxios": "npm:^0.4.14"
     "@types/node": "npm:^16.11.41"
