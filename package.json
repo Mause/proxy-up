@@ -42,5 +42,5 @@
     "vercel-node-server": "^2.2.1",
     "vercel-openapi": "^0.1.13"
   },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "yarn@4.18.0"
 }
