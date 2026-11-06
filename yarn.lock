@@ -1055,15 +1055,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logtail/bunyan@npm:^0.5.0":
-  version: 0.5.2
-  resolution: "@logtail/bunyan@npm:0.5.2"
+"@logtail/bunyan@npm:^0.6.0":
+  version: 0.6.1
+  resolution: "@logtail/bunyan@npm:0.6.1"
   dependencies:
-    "@logtail/node": "npm:^0.5.2"
-    "@logtail/types": "npm:^0.5.2"
+    "@logtail/node": "npm:^0.6.1"
+    "@logtail/types": "npm:^0.6.0"
   peerDependencies:
     bunyan: ">=1.8.12"
-  checksum: 10/d548f20a320ff965e514e124984eb32b33a6770903ce1cea22071acee8458cf725481b50a024a77dd8c629ee7557b459841f83c615b2c92c5166257f74bed89f
+  checksum: 10/951f373c46f7fab685858c1d1f6c4b6e6af8986c31b7eff1ca65161ad0b497f6c9de410d46dcd6fc677c97c8e93bdb55cb6f25802cf1ccb872734f45f06c973c
   languageName: node
   linkType: hard
 
@@ -1078,7 +1078,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logtail/node@npm:^0.5.0, @logtail/node@npm:^0.5.2":
+"@logtail/core@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@logtail/core@npm:0.6.1"
+  dependencies:
+    "@logtail/tools": "npm:^0.6.0"
+    "@logtail/types": "npm:^0.6.0"
+    serialize-error: "npm:8.1.0"
+  checksum: 10/dce37a89225f8e16e6d53cd1faf63c7479759d22f6ec25f95172c9f5dc36e63400b23d0ed16a880ba6d28269922ee7801a657a33c516cff09e2b26f0b0f4dbc3
+  languageName: node
+  linkType: hard
+
+"@logtail/node@npm:^0.5.0":
   version: 0.5.2
   resolution: "@logtail/node@npm:0.5.2"
   dependencies:
@@ -1094,6 +1105,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logtail/node@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@logtail/node@npm:0.6.1"
+  dependencies:
+    "@logtail/core": "npm:^0.6.1"
+    "@logtail/types": "npm:^0.6.0"
+    "@msgpack/msgpack": "npm:^2.5.1"
+    stack-trace: "npm:0.0.10"
+  checksum: 10/0075e81c4bdd618309d5e7db6cc015577fa8f74faada5184e27d63a223f19ebf97395148b50bd1d1fb992cae382eba81a4fdd95865e13470b385b083952587d9
+  languageName: node
+  linkType: hard
+
 "@logtail/tools@npm:^0.5.2":
   version: 0.5.2
   resolution: "@logtail/tools@npm:0.5.2"
@@ -1104,10 +1127,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logtail/tools@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@logtail/tools@npm:0.6.0"
+  dependencies:
+    "@logtail/types": "npm:^0.6.0"
+  checksum: 10/095630ede796abcd83e52eda6696da89881afb383e43e3807f36c9666ba465106710d6facc5410c06f33f496cfd43b60d10990a1ef69b07e61b4e95e341315c4
+  languageName: node
+  linkType: hard
+
 "@logtail/types@npm:^0.5.2":
   version: 0.5.2
   resolution: "@logtail/types@npm:0.5.2"
   checksum: 10/9986f3d6c5dc9826639ecda254a31444bf66b94fc736ae637d681f642574c9544d8441c46479fba40c98be75f173420c877bb399b3ff646c858f81a45607419d
+  languageName: node
+  linkType: hard
+
+"@logtail/types@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@logtail/types@npm:0.6.0"
+  checksum: 10/93b2a3abc26452357ca81aa137b477235481b8a04d2c09f1b22fa5090e4f0068f1ebc93bc4bf20d19fdf8052b4fa233a5a3ae6d6394bad2fdcfe387c5fb6911b
   languageName: node
   linkType: hard
 
@@ -6146,7 +6185,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "proxy-up@workspace:."
   dependencies:
-    "@logtail/bunyan": "npm:^0.5.0"
+    "@logtail/bunyan": "npm:^0.6.0"
     "@logtail/node": "npm:^0.5.0"
     "@types/bunyan": "npm:^1.8.8"
     "@types/jest": "npm:^28.0.0"

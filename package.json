@@ -15,7 +15,7 @@
     "node": "20"
   },
   "dependencies": {
-    "@logtail/bunyan": "^0.5.0",
+    "@logtail/bunyan": "^0.6.0",
     "@logtail/node": "^0.5.0",
     "@types/bunyan": "^1.8.8",
     "@types/lodash": "^4.14.178",
